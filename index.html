@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Demo</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .contain{
+          display: flex;
+          justify-content: center;
+          gap: 30px;
+          position: relative;
+          top: -10px;
+        }
+        .box {
+            width: 50px;
+            height: 100px;
+            background-color: rgb(255, 255, 255);
+            
+            border-radius: 50%;
+            align-content: center;
+            position: relative;
+            
+        }
+        .smallbox{
+          background-color: black;
+          width: 20px;
+          height: 40px;
+          border-radius: 50%;
+          position: relative;
+          
+        }
+        button {
+            margin: 10px;
+            background-color:#3498db;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover{
+          opacity: 0.5;
+        }
+        .container{
+          margin-top: 50px;
+          width: 200px;
+          height: 200px;
+          background-color: rgb(245, 245, 9);
+          border-radius: 50%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          left:35rem;
+        }
+        .smile{
+          width: 20px;
+          height: 6px;
+          border-radius: 10px;
+          background-color: black;
+          position: relative;
+          top:12px;
+          
+        }
+        #rotateBox {
+            
+            transition: transform 0.5s ease; /* Smooth rotation */
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery Demo</h1>
+    
+    <button id="fade">Fade</button>
+    <button id="slide">Slide</button>
+    <button id="color">Change Color</button>
+    <button id="move">Move</button>
+    <button id="rotateButton">Rotate</button>
+
+    <div class="container" id="rotateBox">
+      <div class="contain">
+    <div class="box"> 
+      <div class="smallbox">
+
+      </div>
+    </div>
+    <div class="box">
+      <div class="smallbox">
+        
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="smile">
+      
+  </div>
+
+  </div>
+    <script>
+        $(document).ready(function() {
+
+            $(".box").hover(function(){
+
+            })
+            $('#fade').click(function() {
+                $('.box').fadeToggle(1000);
+            });
+
+            $('#fade').click(function() {
+                $('.smile').fadeToggle(1000);
+            });
+
+            $('#slide').click(function() {
+                $('.box').slideToggle(1000);
+            });
+
+            $('#color').click(function() {
+                $('.container').css('background-color', 
+                    $('.container').css('background-color') === 'rgb(245, 245, 9)' ? ' rgb(245, 29, 9)' : 'rgb(245, 245, 9)');
+            });
+
+            $('#move').click(function() {
+                $('.smallbox').animate({
+                    left: $('.smallbox').css('left') === '0px' ? '30px' : '0px'
+                }, 1000);
+            });
+            
+            let angle = 0; // Initial angle
+            $('#rotateButton').click(function() {
+                angle += 45; // Increase angle by 45 degrees
+                $('#rotateBox').css('transform', 'rotate(' + angle + 'deg)'); // Apply rotation
+            });
+       
+        });
+    </script>
+</body>
+</html>
